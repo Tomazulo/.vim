@@ -8,6 +8,9 @@
 " Load plugins
 call pathogen#infect()
 
+" Don't worry about Compatibility
+set nocompatible
+
 " gVim Tweaks
 if has("gui_running")
   " Window size
@@ -58,6 +61,29 @@ let netrw_browse_split = 2
 
 " Don't fold comments in ruby
 let ruby_no_comment_fold = 1
+
+" Enable filetype based plugins
+filetype plugin on
+
+" Omnifunc
+set completeopt=longest,menuone
+
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+" Ruby omnifunc
+autocmd FileType ruby set omnifunc=rubycomplete#Complete
+"set completeopt="menu,menuone,preview,longest"
+autocmd FileType ruby let g:rubycomplete_buffer_loading=1
+autocmd FileType ruby let g:rubycomplete_classes_in_global=1
+autocmd FileType ruby let g:rubycomplete_rails=1
+
+" SuperTab
+"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+let g:SuperTabDefaultCompletionType = "context"
 
 " Autochange to current working directory
 "set autochdir	" May fail plugins
