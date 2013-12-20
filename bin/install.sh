@@ -19,6 +19,7 @@ get_bundle() {
 
 get_bundle scrooloose syntastic
 get_bundle vim-ruby vim-ruby
+get_bundle ervandew supertab
 
 vim -c 'call pathogen#helptags()|q'
 
