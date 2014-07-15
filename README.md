@@ -18,5 +18,5 @@ To take advntage of the .vimrc file:
 
 To install all extensions:
 
-    ~/.vim/bin/vimbundles.sh
+    ~/.vim/bin/install.sh
 
